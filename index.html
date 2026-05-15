@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jack Nomina — Engineering &amp; Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #ffffff;
+      --surface:   #f0f6ff;
+      --border:    #d0e3f5;
+      --border-hi: #a8c8e8;
+      --text:      #0f1c2a;
+      --muted:     #5a7a94;
+      --accent:    #1a7fd4;
+      --accent-dim:#155fa8;
+      --gold:      #b8922a;        /* warm accent for music sections */
+      --mono:      'IBM Plex Mono', monospace;
+      --sans:      'IBM Plex Sans', sans-serif;
+      --max:       960px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
+    a:hover { opacity: .75; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Layout ───────────────────────────────────────────── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; }
+
+    /* ══════════════════════════════════════════════════════
+       BACKGROUND IMAGE SYSTEM
+       ══════════════════════════════════════════════════════
+       Add class="has-bg" to any <section> and set the image
+       via a style attribute:
+
+         <section id="about" class="has-bg"
+           style="--bg-img: url('images/lab.jpg'); --overlay-opacity: 0.88;">
+
+       The white overlay (--overlay-opacity) keeps text readable.
+       0 = fully transparent (no tint), 1 = fully white (image hidden).
+       Recommended range: 0.80–0.93 for light sections.
+
+       For sections where you want a DARK overlay instead
+       (e.g. a moody concert photo used as a banner), add
+       class="has-bg dark-overlay" and use --overlay-opacity: 0.55;
+    ══════════════════════════════════════════════════════ */
+    .has-bg {
+      position: relative;
+      background-image: var(--bg-img, none);
+      background-size: cover;
+      background-position: center;
+    }
+    .has-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255, var(--overlay-opacity, 0.85));
+      pointer-events: none;
+      z-index: 0;
+    }
+    .has-bg.dark-overlay::before {
+      background: rgba(10,18,30, var(--overlay-opacity, 0.60));
+    }
+    /* All children of .has-bg sit above the overlay */
+    .has-bg > * { position: relative; z-index: 1; }
+
+    /* ── Nav ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--text); opacity: 1; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    /*
+      HERO BACKGROUND IMAGE
+      To use a photo behind the hero text:
+        1. Add these two properties to the #hero rule below:
+             background-image: url('images/hero.jpg');
+             background-size: cover;
+             background-position: center;
+        2. Change #hero::before to use a white overlay instead
+           of the grid pattern:
+             background: rgba(255,255,255,0.82);
+    */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dot-grid placeholder (replace with solid rgba overlay when using a photo) */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,127,212,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,127,212,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-label::before { content: '// '; opacity: .5; }
+
+    h1 {
+      font-weight: 300;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.12;
+      letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+
+    /* Dual-major identity pills */
+    .hero-dual { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+    .hero-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      padding: .35rem .9rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-hi);
+      color: var(--muted);
+    }
+    .hero-pill.eng   { border-color: var(--accent); color: var(--accent); }
+    .hero-pill.music { border-color: var(--gold);   color: var(--gold); }
+
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .7rem 1.4rem;
+      border-radius: 2px;
+      transition: all .15s;
+      display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dim); opacity: 1; }
+    .btn-ghost { border: 1px solid var(--border-hi); color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-gold:hover { opacity: .85; }
+
+    /* ── Section headings ─────────────────────────────────── */
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .15em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .section-tag::before { content: '// '; opacity: .5; }
+    .section-tag.music-tag { color: var(--gold); }
+
+    h2 {
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -.015em;
+      margin-bottom: 3rem;
+      color: var(--text);
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ── About ────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      overflow: hidden;
+      /*
+        Replace this div with an <img>:
+          <img src="images/your-photo.jpg" alt="Your name" class="about-photo"
+               style="object-fit:cover; border-radius:2px;" />
+      */
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .dual-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      padding: .3rem .7rem;
+      border: 1px solid var(--border-hi);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+    .tag.music { border-color: #d4b06a; color: var(--gold); }
+
+    /* ── Card grid (Research & Projects) ──────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .card { background: var(--bg); padding: 2rem; transition: background .15s; }
+    .card:hover { background: #e8f3fc; }
+
+    .card-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 { font-weight: 400; font-size: 1.05rem; margin-bottom: .6rem; color: var(--text); }
+    .card p   { font-size: .9rem; color: var(--muted); line-height: 1.65; }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .card-link::after { content: ' →'; }
+
+    /*
+      CARD IMAGE
+      Uncomment the <div class="card-img-placeholder"> in each card
+      and replace it with a real <img> once you have photos:
+
+        <img src="images/project1.jpg" alt="Short alt text" class="card-img" />
+
+      The CSS class is ready below:
+    */
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      margin: -2rem -2rem 1.5rem;
+      width: calc(100% + 4rem);
+    }
+
+    /* ══════════════════════════════════════════════════════
+       FULL-WIDTH IMAGE BANNER
+       Use .img-banner as a visual break between sections.
+       Set background-image in the HTML style attribute:
+
+         <div class="img-banner"
+              style="background-image: url('images/concert.jpg');">
+           <div class="img-banner-caption">Carnegie Hall, Nov 2024</div>
+         </div>
+
+       Adjust height by overriding --banner-h:
+         style="--banner-h: 420px; background-image: ..."
+    ══════════════════════════════════════════════════════ */
+    .img-banner {
+      width: 100%;
+      height: var(--banner-h, 320px);
+      background: var(--surface);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Remove this rule once a real image is set */
+    .img-banner:not([style*="background-image"])::before {
+      content: 'Add background-image: url(...) to show a photo here';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .img-banner-caption {
+      position: relative;
+      z-index: 1;
+      padding: .8rem 2rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.9);
+      background: linear-gradient(transparent, rgba(10,18,30,.55));
+      width: 100%;
+    }
+
+    /* ── Extracurricular ──────────────────────────────────── */
+    .extra-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .extra-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+    }
+
+    .extra-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .6rem;
+      display: block;
+    }
+
+    .extra-card h3 { font-weight: 400; font-size: 1rem; color: var(--text); margin-bottom: .4rem; }
+    .extra-card p  { font-size: .875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Performances ─────────────────────────────────────── */
+    .perf-list { list-style: none; }
+
+    .perf-item {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 1rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .perf-item:first-child { border-top: 1px solid var(--border); }
+
+    .perf-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold);
+      line-height: 1.4;
+    }
+
+    .perf-title { font-weight: 400; font-size: .95rem; color: var(--text); margin-bottom: .2rem; }
+    .perf-meta  { font-size: .85rem; color: var(--muted); }
+
+    .perf-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .6rem;
+      border: 1px solid #d4b06a;
+      border-radius: 2px;
+      color: var(--gold);
+      white-space: nowrap;
+      align-self: start;
+    }
+
+    /* ── Research publications ────────────────────────────── */
+    .pub-list { list-style: none; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-item:first-child { border-top: 1px solid var(--border); }
+
+    .pub-year { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: .1rem; }
+    .pub-title { font-weight: 400; font-size: .95rem; color: var(--text); margin-bottom: .25rem; }
+    .pub-meta  { font-size: .85rem; color: var(--muted); }
+    .pub-venue { font-style: italic; }
+
+    /* ── CV ──────────────────────────────────────────────── */
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+
+    .cv-block h3 {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .cv-block h3.music-h3 { color: var(--gold); }
+
+    .cv-entry { margin-bottom: 1.4rem; }
+
+    .cv-entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .cv-role { font-weight: 400; font-size: .95rem; color: var(--text); }
+    .cv-date { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+    .cv-org  { font-size: .85rem; color: var(--muted); }
+
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .skill-item { display: flex; align-items: center; gap: 1rem; }
+    .skill-name { font-family: var(--mono); font-size: 12px; color: var(--muted); min-width: 130px; }
+    .skill-bar  { flex: 1; height: 2px; background: var(--border-hi); border-radius: 1px; overflow: hidden; }
+    .skill-fill { height: 100%; background: var(--accent); border-radius: 1px; }
+    .skill-fill.music-fill { background: var(--gold); }
+
+    /* ── Contact ─────────────────────────────────────────── */
+    #contact { text-align: center; }
+    #contact h2 { margin-bottom: .8rem; }
+    .contact-sub { color: var(--muted); margin-bottom: 2.5rem; }
+
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    .contact-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border-hi);
+      padding: .7rem 1.4rem;
+      border-radius: 2px;
+      transition: all .15s;
+    }
+    .contact-link:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; }
+    footer p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .06em; }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .about-grid,
+      .card-grid,
+      .cv-grid,
+      .extra-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      h1 { font-size: 2.2rem; }
+      .perf-item { grid-template-columns: 1fr; }
+      .perf-tag { width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══════════════════════════════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">Jack Nomina</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#extracurricular">Extra</a></li>
+        <li><a href="#performances">Performances</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ═════════════════════════════════════════════ -->
+  <!--
+    ADDING A HERO BACKGROUND IMAGE:
+    1. Add to the <section> tag:
+         style="background-image: url('images/hero.jpg'); background-size: cover; background-position: center;"
+    2. In the CSS, change #hero::before to:
+         background: rgba(255,255,255,0.82);
+       (removes the grid, adds a white overlay instead)
+  -->
+  <section id="hero">
+    <div class="wrap hero-content">
+      <p class="hero-label">Engineering &amp; Music Performance — Double Major</p>
+      <h1>Robots, research,<br>and <em>music</em>.</h1>
+      <p class="hero-sub">
+        Undergraduate at Miami University studying Mechanical Engineering and
+        Music Performance. GPA 3.92. I work on smart materials and haptic
+        systems in the lab — and perform on stage.
+      </p>
+      <div class="hero-dual">
+        <span class="hero-pill eng">⚙ Mechanical Engineering</span>
+        <span class="hero-pill music">♪ Music Performance</span>
+      </div>
+      <div class="btn-row">
+        <a href="#research" class="btn btn-primary">Research</a>
+        <a href="#performances" class="btn btn-gold">Performances</a>
+        <a href="#contact" class="btn btn-ghost">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ ABOUT ═════════════════════════════════════════════ -->
+  <!--
+    BACKGROUND IMAGE EXAMPLE:
+    <section id="about" class="has-bg"
+      style="--bg-img: url('images/lab-wide.jpg'); --overlay-opacity: 0.90;">
+
+    For a dark overlay on a darker photo, also add class "dark-overlay":
+    <section id="about" class="has-bg dark-overlay"
+      style="--bg-img: url('images/lab.jpg'); --overlay-opacity: 0.60;">
+  -->
+  <section id="about">
+    <div class="wrap">
+      <p class="section-tag">About</p>
+      <h2>Who I am</h2>
+      <div class="about-grid">
+
+        <!--
+          PHOTO — swap this div for a real image:
+          <img src="images/your-photo.jpg" alt="Your name" class="about-photo"
+               style="object-fit:cover; border-radius:2px; aspect-ratio:3/4;" />
+        -->
+        <div class="about-photo">[ your photo ]</div>
+
+        <div class="about-text">
+          <p>
+            I'm an undergraduate at Miami University, Oxford, OH — double-majoring
+            in Mechanical Engineering and Music Performance, graduating May 2026.
+            I carry a 3.92 GPA and scored 169Q / 167V / 5.0W on the GRE.
+          </p>
+          <p>
+            In the lab I work with Dr. Jeong-Hoi Koo at the Smart Materials Lab,
+            developing flexible haptic modules using Electro-Rheological Fluid and
+            silicone-based materials. I spent the summer of 2024 as a research intern
+            at Konkuk University in Seoul, where I improved prototype testing
+            efficiency by 500% in a single week.
+          </p>
+          <p>
+            On the musical side, I pursue a BA in Music Performance alongside my
+            engineering degree — bringing the same rigour I apply in the lab to
+            practice and performance.
+          </p>
+          <div class="dual-tags">
+            <span class="tag">Smart Materials</span>
+            <span class="tag">Haptic Systems</span>
+            <span class="tag">CAD / FEA</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Python · C# · C++</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag music">♪ Music Performance</span>
+            <span class="tag music">♪ ASME President</span>
+            <span class="tag music">♪ Eagle Scout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ RESEARCH ══════════════════════════════════════════ -->
+  <!--
+    BACKGROUND IMAGE EXAMPLE:
+    <section id="research" class="has-bg"
+      style="--bg-img: url('images/robot-lab.jpg'); --overlay-opacity: 0.90;">
+  -->
+  <section id="research">
+    <div class="wrap">
+      <p class="section-tag">Research</p>
+      <h2>Publications &amp; presentations</h2>
+
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <span class="pub-year">In<br>Progress</span>
+          <div>
+            <p class="pub-title">Electro-Rheological Fluid Tuned Vibration Absorber</p>
+            <p class="pub-meta">
+              <strong>Jack Nomina</strong> et al. · Smart Materials Lab, Miami University.
+              <span class="pub-venue">Conference paper in preparation — target submission December 2025.</span>
+            </p>
+            <p class="pub-meta" style="margin-top:.3rem;">
+              Designing an adaptable tuned vibration absorber that uses ERF to alter
+              its damping coefficient and match different resonant frequencies dynamically.
+            </p>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <span class="pub-year">Apr<br>2025</span>
+          <div>
+            <p class="pub-title">Ohio Space Grant Consortium Poster Presentation</p>
+            <p class="pub-meta">
+              <span class="pub-venue">NASA Glenn Research Center</span> — Best Poster Award.
+              Selected from 50+ undergraduate researchers across Ohio; received a perfect evaluation score.
+            </p>
+            <p class="pub-meta" style="margin-top:.3rem;">
+              Presented haptic-systems research to an audience of student researchers, professors, and NASA scientists.
+            </p>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <span class="pub-year">Aug<br>2024</span>
+          <div>
+            <p class="pub-title">Undergraduate Summer Scholars Presentation</p>
+            <p class="pub-meta">
+              <span class="pub-venue">Miami University</span> — Verbal presentation with slideshow,
+              followed by Q&amp;A from peers and professors.
+            </p>
+            <p class="pub-meta" style="margin-top:.3rem;">
+              Presented haptic-systems research to an audience with extensive research experience
+              but no prior background in smart materials or haptics.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ PROJECTS ══════════════════════════════════════════ -->
+  <!--
+    BACKGROUND IMAGE EXAMPLE:
+    <section id="projects" class="has-bg"
+      style="--bg-img: url('images/workshop.jpg'); --overlay-opacity: 0.91;">
+  -->
+  <section id="projects">
+    <div class="wrap">
+      <p class="section-tag">Projects</p>
+      <h2>Engineering builds</h2>
+      <div class="card-grid">
+
+        <div class="card">
+          <p class="card-num">01</p>
+          <h3>Flexible Haptic Module — ERF</h3>
+          <p>Designed and fabricated a flexible haptic module combining silicone-based
+             materials with Electro-Rheological Fluid. Tested prototypes using a
+             Dynamic Mechanical Analyzer (DMA) at Miami's Smart Materials Lab.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-num">02</p>
+          <h3>Tuned Vibration Absorber</h3>
+          <p>Designing an ERF-based tuned vibration absorber with a variable damping
+             coefficient, enabling it to match and suppress different resonant
+             frequencies dynamically. Conference paper in preparation.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-num">03</p>
+          <h3>CBRNE Mask-Cleaning System</h3>
+          <p>Modified and upgraded a mask-cleaning system for military and first-responder
+             CBRNE equipment at AGarvey LLC. Improved clean quality, reduced overheating
+             tendency, and presented the product at military conferences including CBOA.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-num">04</p>
+          <h3>Semi-Automated Aquaponic Farm</h3>
+          <p>TSA 2022 National Champion. Led a team of 6 to design and build a
+             semi-automated aquaponic farm in response to the prompt "Restore or improve
+             urban infrastructure." Improved system efficiency from 30% to 90% across
+             three testing phases.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-num">05</p>
+          <h3>PLC Automated Assembly Line Tool</h3>
+          <p>Developed a pneumatic system with PLC ladder logic at The Fischer Group,
+             allowing line workers to replace materials without halting production —
+             saving up to 2 minutes per replacement cycle.</p>
+        </div>
+
+        <div class="card">
+          <p class="card-num">06</p>
+          <h3>Manufacturing Clamps &amp; Oil Distribution Systems</h3>
+          <p>Collaborated with fellow interns to design and fabricate manufacturing
+             fixtures and oil distribution systems. Gained proficiency in CAM software
+             and subtractive manufacturing with metals.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ EXTRACURRICULAR ════════════════════════════════════ -->
+  <section id="extracurricular">
+    <div class="wrap">
+      <p class="section-tag">Extracurricular</p>
+      <h2>Beyond the classroom</h2>
+      <div class="extra-grid">
+
+        <div class="extra-card">
+          <span class="extra-label">Engineering</span>
+          <h3>Robotics Club / Team</h3>
+          <p>Describe your role and what the team works on — competitions,
+             community outreach, specific builds.</p>
+        </div>
+
+        <div class="extra-card">
+          <span class="extra-label" style="color:var(--gold);">Music</span>
+          <h3>University Symphony Orchestra</h3>
+          <p>Section, years of membership, any leadership roles or
+             notable performances with this ensemble.</p>
+        </div>
+
+        <div class="extra-card">
+          <span class="extra-label">Leadership</span>
+          <h3>Student Organisation</h3>
+          <p>Role and responsibilities. What you built, organised, or
+             led during your time here.</p>
+        </div>
+
+        <div class="extra-card">
+          <span class="extra-label" style="color:var(--gold);">Music</span>
+          <h3>Chamber Ensemble</h3>
+          <p>Members, repertoire focus, any recordings or competitions.
+             Add or remove cards freely.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FULL-WIDTH IMAGE BANNER ════════════════════════════ -->
+  <!--
+    Add your concert or performance photo as a CSS background-image:
+
+      <div class="img-banner"
+           style="background-image: url('images/concert-hall.jpg');">
+        <div class="img-banner-caption">Recital Hall, April 2025</div>
+      </div>
+
+    Adjust the height: style="--banner-h: 420px; background-image: ..."
+  -->
+  <div class="img-banner">
+    <div class="img-banner-caption">[ add a concert or performance photo here ]</div>
+  </div>
+
+  <!-- ══ PERFORMANCES ══════════════════════════════════════ -->
+  <!--
+    BACKGROUND IMAGE EXAMPLE (light overlay over a stage photo):
+    <section id="performances" class="has-bg"
+      style="--bg-img: url('images/stage.jpg'); --overlay-opacity: 0.88;">
+  -->
+  <section id="performances">
+    <div class="wrap">
+      <p class="section-tag music-tag">Performances</p>
+      <h2>On stage</h2>
+
+      <ul class="perf-list">
+
+        <li class="perf-item">
+          <span class="perf-date">May<br>2025</span>
+          <div>
+            <p class="perf-title">Recital Title or Programme Name</p>
+            <p class="perf-meta">[Concert Hall / Theatre] — [City]</p>
+            <p class="perf-meta" style="margin-top:.2rem;">
+              Works: Composer — <em>Piece Title</em>; Composer — <em>Piece Title</em>
+            </p>
+          </div>
+          <span class="perf-tag">Solo</span>
+        </li>
+
+        <li class="perf-item">
+          <span class="perf-date">Mar<br>2025</span>
+          <div>
+            <p class="perf-title">Orchestra Concert — Spring Programme</p>
+            <p class="perf-meta">University Symphony Orchestra · [Venue]</p>
+            <p class="perf-meta" style="margin-top:.2rem;">
+              Principal [instrument] — Conductor: [Name]
+            </p>
+          </div>
+          <span class="perf-tag">Orchestra</span>
+        </li>
+
+        <li class="perf-item">
+          <span class="perf-date">Nov<br>2024</span>
+          <div>
+            <p class="perf-title">Chamber Music Festival</p>
+            <p class="perf-meta">[Ensemble Name] · [Venue / Festival]</p>
+            <p class="perf-meta" style="margin-top:.2rem;">
+              Composer — <em>String Quartet in X Major</em>
+            </p>
+          </div>
+          <span class="perf-tag">Chamber</span>
+        </li>
+
+        <li class="perf-item">
+          <span class="perf-date">Apr<br>2024</span>
+          <div>
+            <p class="perf-title">Competition / Masterclass</p>
+            <p class="perf-meta">[Competition Name] · [City]</p>
+            <p class="perf-meta" style="margin-top:.2rem;">
+              Result: [prize / participation note]
+            </p>
+          </div>
+          <span class="perf-tag">Competition</span>
+        </li>
+
+      </ul>
+
+      <div style="margin-top:2rem;">
+        <a href="#" class="btn btn-gold">Full programme history</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ CV ════════════════════════════════════════════════ -->
+  <section id="cv">
+    <div class="wrap">
+      <p class="section-tag">CV</p>
+      <h2>Experience &amp; skills</h2>
+      <div class="cv-grid">
+
+        <!-- Left: education + experience -->
+        <div>
+          <div class="cv-block">
+            <h3>Education</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">B.S. Mechanical Engineering &amp; Music Performance</span>
+                <span class="cv-date">2022 – present</span>
+              </div>
+              <p class="cv-org">[University Name]</p>
+            </div>
+          </div>
+
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3>Research &amp; Industry</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Research Assistant</span>
+                <span class="cv-date">2023 – present</span>
+              </div>
+              <p class="cv-org">[Lab Name], [University]</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Engineering Intern</span>
+                <span class="cv-date">Summer 2024</span>
+              </div>
+              <p class="cv-org">[Company Name]</p>
+            </div>
+          </div>
+
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3 class="music-h3">Music Study</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Principal study — [Instrument]</span>
+                <span class="cv-date">2022 – present</span>
+              </div>
+              <p class="cv-org">Prof. [Teacher Name], [University]</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Summer Music Programme</span>
+                <span class="cv-date">Summer 2023</span>
+              </div>
+              <p class="cv-org">[Programme / Festival Name]</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: skills + awards -->
+        <div>
+          <div class="cv-block">
+            <h3>Engineering skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">C++</span>
+                <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">ROS / ROS 2</span>
+                <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">PyTorch</span>
+                <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">CAD / SolidWorks</span>
+                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3 class="music-h3">Musical skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">
+                <span class="skill-name">[Instrument]</span>
+                <div class="skill-bar"><div class="skill-fill music-fill" style="width:90%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Music Theory</span>
+                <div class="skill-bar"><div class="skill-fill music-fill" style="width:85%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Chamber Music</span>
+                <div class="skill-bar"><div class="skill-fill music-fill" style="width:80%"></div></div>
+              </li>
+              <li class="skill-item">
+                <span class="skill-name">Sight-reading</span>
+                <div class="skill-bar"><div class="skill-fill music-fill" style="width:75%"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3>Awards</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Award or Scholarship Name</span>
+                <span class="cv-date">2024</span>
+              </div>
+              <p class="cv-org">Awarding Body</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Competition Prize</span>
+                <span class="cv-date">2023</span>
+              </div>
+              <p class="cv-org">Organisation</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="cv.pdf" class="btn btn-ghost">Download engineering CV</a>
+        <a href="music-cv.pdf" class="btn btn-ghost"
+           style="border-color:#d4b06a; color:var(--gold);">Download music CV</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ══ CONTACT ═══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="wrap">
+      <p class="section-tag">Contact</p>
+      <h2>Let's connect</h2>
+      <p class="contact-sub">
+        Open to research collaborations, engineering internships, ensemble
+        invitations, and conversations about robots or music.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:you@university.edu" class="contact-link">Email</a>
+        <a href="https://scholar.google.com" class="contact-link">Google Scholar</a>
+        <a href="https://github.com/yourhandle" class="contact-link">GitHub</a>
+        <a href="https://linkedin.com/in/yourhandle" class="contact-link">LinkedIn</a>
+        <a href="https://twitter.com/yourhandle" class="contact-link">Twitter / X</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer>
+    <div class="wrap">
+      <p>© 2025 Your Name · Mechanical Engineering &amp; Music Performance · [University]</p>
+    </div>
+  </footer>
+
+</body>
+</html>
