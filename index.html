@@ -10,7 +10,7 @@
   <style>
     /* ── Reset & Base ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     :root {
       --bg:        #ffffff;
       --surface:   #f0f6ff;
@@ -25,9 +25,9 @@
       --sans:      'IBM Plex Sans', sans-serif;
       --max:       960px;
     }
-
+ 
     html { scroll-behavior: smooth; }
-
+ 
     body {
       font-family: var(--sans);
       font-weight: 300;
@@ -37,28 +37,28 @@
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
-
+ 
     a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
     a:hover { opacity: .75; }
     img { display: block; max-width: 100%; }
-
+ 
     /* ── Layout ───────────────────────────────────────────── */
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
     section { padding: 5rem 0; }
-
+ 
     /* ══════════════════════════════════════════════════════
        BACKGROUND IMAGE SYSTEM
        ══════════════════════════════════════════════════════
        Add class="has-bg" to any <section> and set the image
        via a style attribute:
-
+ 
          <section id="about" class="has-bg"
            style="--bg-img: url('images/lab.jpg'); --overlay-opacity: 0.88;">
-
+ 
        The white overlay (--overlay-opacity) keeps text readable.
        0 = fully transparent (no tint), 1 = fully white (image hidden).
        Recommended range: 0.80–0.93 for light sections.
-
+ 
        For sections where you want a DARK overlay instead
        (e.g. a moody concert photo used as a banner), add
        class="has-bg dark-overlay" and use --overlay-opacity: 0.55;
@@ -82,7 +82,7 @@
     }
     /* All children of .has-bg sit above the overlay */
     .has-bg > * { position: relative; z-index: 1; }
-
+ 
     /* ── Nav ──────────────────────────────────────────────── */
     nav {
       position: fixed;
@@ -92,7 +92,7 @@
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(12px);
     }
-
+ 
     .nav-inner {
       max-width: var(--max);
       margin: 0 auto;
@@ -102,7 +102,7 @@
       align-items: center;
       justify-content: space-between;
     }
-
+ 
     .nav-logo {
       font-family: var(--mono);
       font-size: 13px;
@@ -111,9 +111,9 @@
       text-transform: uppercase;
       flex-shrink: 0;
     }
-
+ 
     .nav-links { display: flex; gap: 1.6rem; list-style: none; }
-
+ 
     .nav-links a {
       font-family: var(--mono);
       font-size: 11px;
@@ -123,7 +123,7 @@
       transition: color .15s;
     }
     .nav-links a:hover { color: var(--text); opacity: 1; }
-
+ 
     /* ── Hero ─────────────────────────────────────────────── */
     /*
       HERO BACKGROUND IMAGE
@@ -144,7 +144,7 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     /* Dot-grid placeholder (replace with solid rgba overlay when using a photo) */
     #hero::before {
       content: '';
@@ -156,9 +156,9 @@
       background-size: 48px 48px;
       pointer-events: none;
     }
-
+ 
     .hero-content { position: relative; z-index: 1; }
-
+ 
     .hero-label {
       font-family: var(--mono);
       font-size: 12px;
@@ -168,7 +168,7 @@
       margin-bottom: 1.5rem;
     }
     .hero-label::before { content: '// '; opacity: .5; }
-
+ 
     h1 {
       font-weight: 300;
       font-size: clamp(2.4rem, 6vw, 4.2rem);
@@ -178,17 +178,17 @@
       color: var(--text);
     }
     h1 em { font-style: normal; color: var(--accent); }
-
+ 
     .hero-sub {
       font-size: 1.05rem;
       color: var(--muted);
       max-width: 560px;
       margin-bottom: 2rem;
     }
-
+ 
     /* Dual-major identity pills */
     .hero-dual { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-
+ 
     .hero-pill {
       font-family: var(--mono);
       font-size: 11px;
@@ -200,9 +200,9 @@
     }
     .hero-pill.eng   { border-color: var(--accent); color: var(--accent); }
     .hero-pill.music { border-color: var(--gold);   color: var(--gold); }
-
+ 
     .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-
+ 
     .btn {
       font-family: var(--mono);
       font-size: 12px;
@@ -219,7 +219,7 @@
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
     .btn-gold { background: var(--gold); color: #fff; }
     .btn-gold:hover { opacity: .85; }
-
+ 
     /* ── Section headings ─────────────────────────────────── */
     .section-tag {
       font-family: var(--mono);
@@ -231,7 +231,7 @@
     }
     .section-tag::before { content: '// '; opacity: .5; }
     .section-tag.music-tag { color: var(--gold); }
-
+ 
     h2 {
       font-weight: 300;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -239,9 +239,9 @@
       margin-bottom: 3rem;
       color: var(--text);
     }
-
+ 
     .divider { border: none; border-top: 1px solid var(--border); }
-
+ 
     /* ── About ────────────────────────────────────────────── */
     .about-grid {
       display: grid;
@@ -249,7 +249,7 @@
       gap: 4rem;
       align-items: start;
     }
-
+ 
     .about-photo {
       aspect-ratio: 3/4;
       background: var(--surface);
@@ -269,12 +269,12 @@
                style="object-fit:cover; border-radius:2px;" />
       */
     }
-
+ 
     .about-text p { color: var(--muted); margin-bottom: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
-
+ 
     .dual-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
-
+ 
     .tag {
       font-family: var(--mono);
       font-size: 11px;
@@ -285,69 +285,80 @@
       color: var(--muted);
     }
     .tag.music { border-color: #d4b06a; color: var(--gold); }
-
-    /* ── Card grid (Research & Projects) ──────────────────── */
-    .card-grid {
+ 
+    /* ── Projects (one-column blocks) ────────────────────── */
+    .project-list { display: flex; flex-direction: column; gap: 2.5rem; }
+ 
+    .project-block { border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+ 
+    .project-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1.4rem 2rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .project-num { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: .1em; flex-shrink: 0; }
+    .project-block h3 { font-weight: 400; font-size: 1.1rem; color: var(--text); letter-spacing: -.01em; }
+ 
+    .project-photos { display: grid; gap: 2px; background: var(--border); }
+    .project-photos.photos-1 { grid-template-columns: 1fr; }
+    .project-photos.photos-2 { grid-template-columns: 1fr 1fr; }
+    .project-photos.photos-3 { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; }
+    .project-photos.photos-3 .proj-img:first-child { grid-row: 1 / 3; }
+    .project-photos.photos-4 { grid-template-columns: 1fr 1fr; }
+ 
+    .proj-img { background: var(--surface); overflow: hidden; aspect-ratio: 16/9; }
+    .proj-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+    .proj-img:hover img { transform: scale(1.03); }
+    .proj-img-placeholder {
+      width: 100%; height: 100%; min-height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .06em;
+      border: 1px dashed var(--border-hi);
+    }
+ 
+    .project-desc { padding: 1.6rem 2rem; }
+    .project-desc p { font-size: .9rem; color: var(--muted); line-height: 1.75; margin-bottom: .8rem; }
+    .project-desc p:last-child { margin-bottom: 0; }
+ 
+    /* ── Press ────────────────────────────────────────────── */
+    .press-list { list-style: none; }
+ 
+    .press-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      text-decoration: none;
+      transition: background .15s;
     }
-
-    .card { background: var(--bg); padding: 2rem; transition: background .15s; }
-    .card:hover { background: #e8f3fc; }
-
-    .card-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-      letter-spacing: .1em;
-      margin-bottom: 1rem;
+    .press-item:first-child { border-top: 1px solid var(--border); }
+    .press-item:hover .press-title { color: var(--accent); }
+ 
+    .press-date { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.4; padding-top: .15rem; }
+ 
+    .press-source {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .3rem; display: block;
     }
-
-    .card h3 { font-weight: 400; font-size: 1.05rem; margin-bottom: .6rem; color: var(--text); }
-    .card p   { font-size: .9rem; color: var(--muted); line-height: 1.65; }
-
-    .card-link {
-      display: inline-block;
-      margin-top: 1.2rem;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: .08em;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-    .card-link::after { content: ' →'; }
-
-    /*
-      CARD IMAGE
-      Uncomment the <div class="card-img-placeholder"> in each card
-      and replace it with a real <img> once you have photos:
-
-        <img src="images/project1.jpg" alt="Short alt text" class="card-img" />
-
-      The CSS class is ready below:
-    */
-    .card-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      display: block;
-      margin: -2rem -2rem 1.5rem;
-      width: calc(100% + 4rem);
-    }
-
+    .press-title { font-weight: 400; font-size: .95rem; color: var(--text); line-height: 1.5; transition: color .15s; margin-bottom: .3rem; }
+    .press-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .press-arrow { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-top: .5rem; display: inline-block; }
+ 
     /* ══════════════════════════════════════════════════════
        FULL-WIDTH IMAGE BANNER
        Use .img-banner as a visual break between sections.
        Set background-image in the HTML style attribute:
-
+ 
          <div class="img-banner"
               style="background-image: url('images/concert.jpg');">
            <div class="img-banner-caption">Carnegie Hall, Nov 2024</div>
          </div>
-
+ 
        Adjust height by overriding --banner-h:
          style="--banner-h: 420px; background-image: ..."
     ══════════════════════════════════════════════════════ */
@@ -363,7 +374,7 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-
+ 
     /* Remove this rule once a real image is set */
     .img-banner:not([style*="background-image"])::before {
       content: 'Add background-image: url(...) to show a photo here';
@@ -376,7 +387,7 @@
       font-size: 12px;
       color: var(--muted);
     }
-
+ 
     .img-banner-caption {
       position: relative;
       z-index: 1;
@@ -388,37 +399,122 @@
       background: linear-gradient(transparent, rgba(10,18,30,.55));
       width: 100%;
     }
-
+ 
     /* ── Extracurricular ──────────────────────────────────── */
-    .extra-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .extra-card {
-      background: var(--surface);
+    .org-list { display: flex; flex-direction: column; gap: 1.5rem; }
+ 
+    .org-block {
       border: 1px solid var(--border);
       border-radius: 2px;
-      padding: 1.5rem;
+      overflow: hidden;
     }
-
-    .extra-label {
+ 
+    .org-header {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: stretch;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .org-img {
+      width: 200px;
+      min-height: 220px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .org-img img { width: 100%; height: 100%; object-fit: contain; padding: 1.2rem; }
+    .org-img-placeholder {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      padding: 1rem;
+      text-align: center;
+    }
+ 
+    .org-title-block {
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .4rem;
+    }
+    .org-category {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .org-name {
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--text);
+      letter-spacing: -.01em;
+    }
+ 
+    .org-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+ 
+    .org-roles {
+      padding: 1.5rem 2rem;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .org-roles-label {
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: .6rem;
+      color: var(--muted);
+      margin-bottom: .8rem;
       display: block;
     }
-
-    .extra-card h3 { font-weight: 400; font-size: 1rem; color: var(--text); margin-bottom: .4rem; }
-    .extra-card p  { font-size: .875rem; color: var(--muted); line-height: 1.6; }
-
+    .org-roles ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .org-roles li {
+      font-size: .875rem;
+      color: var(--text);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.45;
+    }
+    .org-roles li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+    .org-roles .role-year {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-top: .1rem;
+    }
+ 
+    .org-desc { padding: 1.5rem 2rem; }
+    .org-desc p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: .8rem; }
+    .org-desc p:last-child { margin-bottom: 0; }
+ 
+    @media (max-width: 700px) {
+      .org-header { grid-template-columns: 1fr; }
+      .org-img { width: 100%; min-height: 100px; border-right: none; border-bottom: 1px solid var(--border); }
+      .org-body { grid-template-columns: 1fr; }
+      .org-roles { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+ 
     /* ── Performances ─────────────────────────────────────── */
     .perf-list { list-style: none; }
-
+ 
     .perf-item {
       display: grid;
       grid-template-columns: 60px 1fr auto;
@@ -428,17 +524,17 @@
       align-items: start;
     }
     .perf-item:first-child { border-top: 1px solid var(--border); }
-
+ 
     .perf-date {
       font-family: var(--mono);
       font-size: 11px;
       color: var(--gold);
       line-height: 1.4;
     }
-
+ 
     .perf-title { font-weight: 400; font-size: .95rem; color: var(--text); margin-bottom: .2rem; }
     .perf-meta  { font-size: .85rem; color: var(--muted); }
-
+ 
     .perf-tag {
       font-family: var(--mono);
       font-size: 10px;
@@ -451,27 +547,86 @@
       white-space: nowrap;
       align-self: start;
     }
-
+ 
+    .perf-photo {
+      grid-column: 2 / 3;
+      margin-top: .8rem;
+    }
+    .perf-photo img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .perf-photo-placeholder {
+      width: 100%;
+      height: 120px;
+      background: var(--surface);
+      border: 1px dashed var(--border-hi);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+    .perf-photo-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-top: .4rem;
+    }
+    @media (max-width: 700px) {
+      .perf-photo { grid-column: 1 / -1; }
+    }
+ 
     /* ── Research publications ────────────────────────────── */
     .pub-list { list-style: none; }
-
+ 
     .pub-item {
       display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 1rem;
-      padding: 1.5rem 0;
+      grid-template-columns: 72px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--border);
     }
     .pub-item:first-child { border-top: 1px solid var(--border); }
-
-    .pub-year { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: .1rem; }
+ 
+    .pub-year {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      padding-top: .15rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
     .pub-title { font-weight: 400; font-size: .95rem; color: var(--text); margin-bottom: .25rem; }
     .pub-meta  { font-size: .85rem; color: var(--muted); }
     .pub-venue { font-style: italic; }
-
+ 
+    .pub-photo {
+      grid-column: 2 / 3;
+      margin-top: .8rem;
+    }
+    .pub-photo img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+ 
     /* ── CV ──────────────────────────────────────────────── */
     .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-
+ 
     .cv-block h3 {
       font-family: var(--mono);
       font-size: 12px;
@@ -481,34 +636,34 @@
       margin-bottom: 1.2rem;
     }
     .cv-block h3.music-h3 { color: var(--gold); }
-
+ 
     .cv-entry { margin-bottom: 1.4rem; }
-
+ 
     .cv-entry-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 1rem;
     }
-
+ 
     .cv-role { font-weight: 400; font-size: .95rem; color: var(--text); }
     .cv-date { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
     .cv-org  { font-size: .85rem; color: var(--muted); }
-
+ 
     .skill-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
     .skill-item { display: flex; align-items: center; gap: 1rem; }
     .skill-name { font-family: var(--mono); font-size: 12px; color: var(--muted); min-width: 130px; }
     .skill-bar  { flex: 1; height: 2px; background: var(--border-hi); border-radius: 1px; overflow: hidden; }
     .skill-fill { height: 100%; background: var(--accent); border-radius: 1px; }
     .skill-fill.music-fill { background: var(--gold); }
-
+ 
     /* ── Contact ─────────────────────────────────────────── */
     #contact { text-align: center; }
     #contact h2 { margin-bottom: .8rem; }
     .contact-sub { color: var(--muted); margin-bottom: 2.5rem; }
-
+ 
     .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-
+ 
     .contact-link {
       font-family: var(--mono);
       font-size: 12px;
@@ -521,11 +676,11 @@
       transition: all .15s;
     }
     .contact-link:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
-
+ 
     /* ── Footer ──────────────────────────────────────────── */
     footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; }
     footer p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .06em; }
-
+ 
     /* ── Responsive ──────────────────────────────────────── */
     @media (max-width: 700px) {
       .about-grid,
@@ -540,7 +695,7 @@
   </style>
 </head>
 <body>
-
+ 
   <!-- ══ NAV ══════════════════════════════════════════════ -->
   <nav>
     <div class="nav-inner">
@@ -549,6 +704,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#press">Press</a></li>
         <li><a href="#extracurricular">Extra</a></li>
         <li><a href="#performances">Performances</a></li>
         <li><a href="#cv">CV</a></li>
@@ -556,7 +712,7 @@
       </ul>
     </div>
   </nav>
-
+ 
   <!-- ══ HERO ═════════════════════════════════════════════ -->
   <!--
     ADDING A HERO BACKGROUND IMAGE:
@@ -584,15 +740,15 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ══ ABOUT ═════════════════════════════════════════════ -->
   <!--
     BACKGROUND IMAGE EXAMPLE:
     <section id="about" class="has-bg"
       style="--bg-img: url('images/lab-wide.jpg'); --overlay-opacity: 0.90;">
-
+ 
     For a dark overlay on a darker photo, also add class "dark-overlay":
     <section id="about" class="has-bg dark-overlay"
       style="--bg-img: url('images/lab.jpg'); --overlay-opacity: 0.60;">
@@ -602,14 +758,15 @@
       <p class="section-tag">About</p>
       <h2>Who I am</h2>
       <div class="about-grid">
-
+ 
         <!--
           PHOTO — swap this div for a real image:
           <img src="images/your-photo.jpg" alt="Your name" class="about-photo"
                style="object-fit:cover; border-radius:2px; aspect-ratio:3/4;" />
         -->
-        <div class="about-photo">[ your photo ]</div>
-
+        <img src="Headshot.jpeg" alt="Jack Nomina" class="about-photo"
+             style="object-fit:cover; object-position:center top; border-radius:2px;" />
+ 
         <div class="about-text">
           <p>
             I am a Masters student at Miami University in Oxford, OH studying Mechanical Engineering. 
@@ -627,24 +784,14 @@
             in middle school. I have performed in various orchestras, concert bands, and chamber ensembles. 
             During my undergraduate education, I studied under Professor Andrea Ridilla at Miami University.
           </p>
-          <div class="dual-tags">
-            <span class="tag">Smart Materials</span>
-            <span class="tag">Haptic Systems</span>
-            <span class="tag">CAD / FEA</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">Python · C# · C++</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag music">♪ Music Performance</span>
-            <span class="tag music">♪ ASME President</span>
-            <span class="tag music">♪ Eagle Scout</span>
-          </div>
+ 
         </div>
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ══ RESEARCH ══════════════════════════════════════════ -->
   <!--
     BACKGROUND IMAGE EXAMPLE:
@@ -655,180 +802,411 @@
     <div class="wrap">
       <p class="section-tag">Research</p>
       <h2>Publications &amp; presentations</h2>
-
+ 
       <ul class="pub-list">
-
+ 
         <li class="pub-item">
           <span class="pub-year">In<br>Progress</span>
           <div>
             <p class="pub-title">Electro-Rheological Fluid Tuned Vibration Absorber</p>
             <p class="pub-meta">
-              <strong>Jack Nomina</strong> et al. · Smart Materials Lab, Miami University.
-              <span class="pub-venue">Conference paper in preparation — target submission December 2025.</span>
+              <strong>Jack Nomina</strong> · Smart Materials Lab, Miami University.
+              <span class="pub-venue">Journal paper in preparation &mdash; intended submission Summer 2026.</span>
             </p>
             <p class="pub-meta" style="margin-top:.3rem;">
-              Designing an adaptable tuned vibration absorber that uses ERF to alter
-              its damping coefficient and match different resonant frequencies dynamically.
+              Preparing a journal paper on the design and testing of a tuned vibration absorber that employs the smart material electro-rheological fluid in order to alter the damping coefficient and spring constant of the absorber. The goal of this study is to create an adaptable tuned vibration absorber that dampens different resonant frequencies depending on the resonant frequency of objects that it is placed on.
             </p>
           </div>
         </li>
-
+ 
+        <li class="pub-item">
+          <span class="pub-year">Apr<br>2026</span>
+          <div>
+            <p class="pub-title">Ohio Space Grant Consortium Presentation</p>
+            <p class="pub-meta">
+              <span class="pub-venue">NASA Glenn Research Center</span>
+            </p>
+            <p class="pub-meta" style="margin-top:.3rem;">
+              Presenting research on the design of a tuned vibration absorber to an audience of other student researchers, professors, and NASA scientists at NASA Glenn Research Center. Audience had STEM research experience but did not necessarily have smart materials experience. Presentation format was slideshow accompanied by explanation.
+            </p>
+          </div>
+          <div class="pub-photo">
+            <img src="OSGC2026Presenting.jpg" alt="Jack Nomina presenting at OSGC 2026, NASA Glenn Research Center" />
+          </div>
+        </li>
+ 
         <li class="pub-item">
           <span class="pub-year">Apr<br>2025</span>
           <div>
             <p class="pub-title">Ohio Space Grant Consortium Poster Presentation</p>
             <p class="pub-meta">
-              <span class="pub-venue">NASA Glenn Research Center</span> — Best Poster Award.
+              <span class="pub-venue">NASA Glenn Research Center</span> &mdash; Best Poster Award.
               Selected from 50+ undergraduate researchers across Ohio; received a perfect evaluation score.
             </p>
             <p class="pub-meta" style="margin-top:.3rem;">
-              Presented haptic-systems research to an audience of student researchers, professors, and NASA scientists.
+              Presenting research on haptic systems to an audience of other student researchers, professors, and NASA scientists at NASA Glenn Research Center. Audience had STEM research experience but did not necessarily have smart materials experience. Presentation via a poster and accompanying verbal explanation.
             </p>
           </div>
+          <div class="pub-photo">
+            <img src="OSGC2025Presenting.jpeg" alt="Jack Nomina presenting at OSGC 2025, NASA Glenn Research Center" />
+          </div>
         </li>
-
+ 
         <li class="pub-item">
           <span class="pub-year">Aug<br>2024</span>
           <div>
             <p class="pub-title">Undergraduate Summer Scholars Presentation</p>
             <p class="pub-meta">
-              <span class="pub-venue">Miami University</span> — Verbal presentation with slideshow,
-              followed by Q&amp;A from peers and professors.
+              <span class="pub-venue">Miami University</span>
             </p>
             <p class="pub-meta" style="margin-top:.3rem;">
-              Presented haptic-systems research to an audience with extensive research experience
-              but no prior background in smart materials or haptics.
+              Presenting research on haptic systems to an audience with extensive research experience but zero knowledge of smart materials or haptics. Short presentation window (verbal accompanied by slideshow) followed by questions from peers and professors.
             </p>
           </div>
+          <div class="pub-photo">
+            <img src="USS2024Presenting.jpeg" alt="Jack Nomina presenting at Undergraduate Summer Scholars 2024" />
+          </div>
         </li>
-
+ 
       </ul>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ══ PROJECTS ══════════════════════════════════════════ -->
-  <!--
-    BACKGROUND IMAGE EXAMPLE:
-    <section id="projects" class="has-bg"
-      style="--bg-img: url('images/workshop.jpg'); --overlay-opacity: 0.91;">
-  -->
   <section id="projects">
     <div class="wrap">
       <p class="section-tag">Projects</p>
-      <h2>Engineering builds</h2>
-      <div class="card-grid">
-
-        <div class="card">
-          <p class="card-num">01</p>
-          <h3>Flexible Haptic Module — ERF</h3>
-          <p>Designed and fabricated a flexible haptic module combining silicone-based
-             materials with Electro-Rheological Fluid. Tested prototypes using a
-             Dynamic Mechanical Analyzer (DMA) at Miami's Smart Materials Lab.</p>
+      <div class="project-list">
+ 
+        <!-- Project 01 -->
+        <div class="project-block">
+          <div class="project-head">
+            <span class="project-num">01</span>
+            <h3>Senior Capstone &mdash; Powell Industries Fastener Sorting System</h3>
+          </div>
+          <div class="project-photos photos-2">
+            <div class="proj-img"><img src="CapstoneWorking.jpeg" alt="Jack wiring the fastener sorting system" /></div>
+            <div class="proj-img"><img src="SeniorDesignExpo.jpg" alt="Team at the 2026 Miami University Senior Design Expo" /></div>
+          </div>
+          <div class="project-desc">
+            <p>
+              Working with a team of 4 other students, I designed, built, and tested an automatic
+              fastener-sorting system for Powell Industries. The system is built around a camera
+              running a machine learning classification algorithm that identifies each fastener type.
+              Once identified, a PLC, pneumatics, HMI, and conveyor work together to route parts
+              to the correct bin. I was responsible for all system wiring and played a major role
+              in the overall design process.
+            </p>
+            <p>
+              Our team won first place at the 2026 Miami University Senior Design Expo among all
+              mechanical engineering projects.
+            </p>
+          </div>
         </div>
-
-        <div class="card">
-          <p class="card-num">02</p>
-          <h3>Tuned Vibration Absorber</h3>
-          <p>Designing an ERF-based tuned vibration absorber with a variable damping
-             coefficient, enabling it to match and suppress different resonant
-             frequencies dynamically. Conference paper in preparation.</p>
+ 
+        <!-- Project 02 -->
+        <div class="project-block">
+          <div class="project-head">
+            <span class="project-num">02</span>
+            <h3>MME 305 &mdash; Automatic Pancake Maker</h3>
+          </div>
+          <div class="project-desc">
+            <p>
+              Working with one other student, I wired and programmed an autonomous pancake-making
+              work cell that guides a user through each step of cooking a pancake. After the first
+              step, the system requires zero user input, using a load cell and thermocouple to
+              confirm each step is complete before advancing.
+            </p>
+            <p>
+              The wiring stack included a DAQ, solid-state relay, instrumentation amplifier,
+              low-pass filter, thermocouple amplifier, and linear voltage regulator. Every test
+              user successfully made a pancake &mdash; mission accomplished.
+            </p>
+          </div>
         </div>
-
-        <div class="card">
-          <p class="card-num">03</p>
-          <h3>CBRNE Mask-Cleaning System</h3>
-          <p>Modified and upgraded a mask-cleaning system for military and first-responder
-             CBRNE equipment at AGarvey LLC. Improved clean quality, reduced overheating
-             tendency, and presented the product at military conferences including CBOA.</p>
+ 
+        <!-- Project 03 -->
+        <div class="project-block">
+          <div class="project-head">
+            <span class="project-num">03</span>
+            <h3>MME 231 &mdash; Pump Project</h3>
+          </div>
+          <div class="project-desc">
+            <p>
+              Designed, manufactured, and tested a rotary pump alongside a team of 3 other students.
+              Every component was hand-manufactured from stock aluminum using a variety of machining
+              and manufacturing processes. The finished pump outperformed all other pumps in the
+              lab section.
+            </p>
+          </div>
         </div>
-
-        <div class="card">
-          <p class="card-num">04</p>
-          <h3>Semi-Automated Aquaponic Farm</h3>
-          <p>TSA 2022 National Champion. Led a team of 6 to design and build a
-             semi-automated aquaponic farm in response to the prompt "Restore or improve
-             urban infrastructure." Improved system efficiency from 30% to 90% across
-             three testing phases.</p>
+ 
+        <!-- Project 04 -->
+        <div class="project-block">
+          <div class="project-head">
+            <span class="project-num">04</span>
+            <h3>Semi-Automated Hydroponic System &mdash; TSA National Champions</h3>
+          </div>
+          <div class="project-photos photos-2">
+            <div class="proj-img"><img src="TSAProject.jpeg" alt="The semi-automated hydroponic system" /></div>
+            <div class="proj-img"><img src="TSATeam.jpeg" alt="TSA team at the 2022 National Conference" /></div>
+          </div>
+          <div class="project-desc">
+            <p>
+              With a team of 5 other students, I designed, built, tested, and presented a
+              semi-automated hydroponic system enabling food banks to grow fresh vegetables in a
+              compact footprint. The project was our entry for the Technology Student Association
+              (TSA) 2022 Engineering Design competition, responding to the prompt &ldquo;Restore or
+              improve urban infrastructure.&rdquo; The system was designed to combat urban food deserts
+              while minimizing floor space within food banks.
+            </p>
+            <p>
+              The design went through multiple iterations and three testing phases, during which
+              yield improved from 30% to 90%. We presented at the 2022 TSA National Conference
+              and were selected as the national champions for Engineering Design.
+            </p>
+          </div>
         </div>
-
-        <div class="card">
-          <p class="card-num">05</p>
-          <h3>PLC Automated Assembly Line Tool</h3>
-          <p>Developed a pneumatic system with PLC ladder logic at The Fischer Group,
-             allowing line workers to replace materials without halting production —
-             saving up to 2 minutes per replacement cycle.</p>
-        </div>
-
-        <div class="card">
-          <p class="card-num">06</p>
-          <h3>Manufacturing Clamps &amp; Oil Distribution Systems</h3>
-          <p>Collaborated with fellow interns to design and fabricate manufacturing
-             fixtures and oil distribution systems. Gained proficiency in CAM software
-             and subtractive manufacturing with metals.</p>
-        </div>
-
+ 
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
+  <!-- ══ PRESS ════════════════════════════════════════════ -->
+  <section id="press">
+    <div class="wrap">
+      <p class="section-tag">Press</p>
+      <h2>In the news</h2>
+      <ul class="press-list">
+ 
+        <li>
+          <a class="press-item" href="https://miamioh.edu/news/2026/05/excelling-in-academics-research-and-music-as-undergraduate-students.html" target="_blank" rel="noopener">
+            <span class="press-date">May<br>2026</span>
+            <div>
+              <span class="press-source">Miami University News</span>
+              <p class="press-title">Excelling in academics, research, and music as undergraduate students</p>
+              <p class="press-desc">Grace Koo and Jack Nomina shined in multiple areas at Miami University.</p>
+              <span class="press-arrow">Read article &#x2192;</span>
+            </div>
+          </a>
+        </li>
+ 
+        <li>
+          <a class="press-item" href="https://miamioh.edu/news/2025/11/miami-student-wins-award-for-virtual-reality-haptics-research.html" target="_blank" rel="noopener">
+            <span class="press-date">Nov<br>2025</span>
+            <div>
+              <span class="press-source">Miami University News</span>
+              <p class="press-title">Miami student wins award for virtual reality haptics research</p>
+              <p class="press-desc">Jack Nomina&#x2019;s haptic technology research could expand VR applications for professional training.</p>
+              <span class="press-arrow">Read article &#x2192;</span>
+            </div>
+          </a>
+        </li>
+ 
+        <!--
+          Add more items:
+          <li>
+            <a class="press-item" href="URL" target="_blank" rel="noopener">
+              <span class="press-date">Mon<br>YYYY</span>
+              <div>
+                <span class="press-source">Publication</span>
+                <p class="press-title">Title</p>
+                <p class="press-desc">Brief description.</p>
+                <span class="press-arrow">Read article &#x2192;</span>
+              </div>
+            </a>
+          </li>
+        -->
+ 
+      </ul>
+    </div>
+  </section>
+ 
+  <hr class="divider" />
+ 
   <!-- ══ EXTRACURRICULAR ════════════════════════════════════ -->
   <section id="extracurricular">
     <div class="wrap">
       <p class="section-tag">Extracurricular</p>
       <h2>Beyond the classroom</h2>
-      <div class="extra-grid">
-
-        <div class="extra-card">
-          <span class="extra-label">Engineering</span>
-          <h3>Robotics Club / Team</h3>
-          <p>Describe your role and what the team works on — competitions,
-             community outreach, specific builds.</p>
+      <div class="org-list">
+ 
+        <!-- ── Engineers Without Borders ── -->
+        <div class="org-block">
+          <div class="org-header">
+            <div class="org-img">
+              <!--
+                Replace with your EWB logo or photo:
+                <img src="images/ewb-logo.png" alt="Engineers Without Borders logo" />
+              -->
+              <img src="EWBGalaFlag.jpeg" alt="EWB Miami University chapter at the Gala" style="object-fit:cover; object-position:center top;" />
+            </div>
+            <div class="org-title-block">
+              <span class="org-category">Engineering · Humanitarian</span>
+              <span class="org-name">Engineers Without Borders</span>
+            </div>
+          </div>
+          <div class="org-body">
+            <div class="org-roles">
+              <span class="org-roles-label">Leadership Roles</span>
+              <ul>
+                <li>
+                  Event Planning Chair
+                  <span class="role-year">2025</span>
+                </li>
+                <li>
+                  Vice President
+                  <span class="role-year">2024</span>
+                </li>
+                <li>
+                  Local Projects Manager
+                  <span class="role-year">2023</span>
+                </li>
+              </ul>
+            </div>
+            <div class="org-desc">
+              <p>
+                Miami University&#x2019;s chapter of Engineers Without Borders works on humanitarian
+                engineering projects both domestically and abroad. During 2023, I served as head of
+                all domestic projects as the Local Projects Manager. The primary project I led involved
+                the design and construction of a steel truss bridge at a local nature preserve.
+              </p>
+              <p>
+                In 2024, I served as Vice President, coordinating with the full leadership team to
+                improve the organization, increase recruitment, and maintain a strong budget. In 2025
+                I served as Event Planning Chair, planning two major events for the chapter: the 2025
+                EWB Great Lakes Regional Convention&#x2014;which earned our chapter the 2025 Premier
+                Student Chapter award&#x2014;and the EWB-MU 2025 Fall Fundraising Gala, which
+                generated thousands of dollars in profit to fund the organization&#x2019;s projects.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div class="extra-card">
-          <span class="extra-label" style="color:var(--gold);">Music</span>
-          <h3>University Symphony Orchestra</h3>
-          <p>Section, years of membership, any leadership roles or
-             notable performances with this ensemble.</p>
+ 
+        <!-- ── Theta Tau ── -->
+        <div class="org-block">
+          <div class="org-header">
+            <div class="org-img">
+              <!--
+                Replace with your Theta Tau logo or photo:
+                <img src="images/theta-tau-logo.png" alt="Theta Tau logo" />
+              -->
+              <img src="TTAUExec.jpeg" alt="Theta Tau Tau Delta executive board" style="object-fit:cover; object-position:center top;" />
+            </div>
+            <div class="org-title-block">
+              <span class="org-category">Engineering · Professional Fraternity</span>
+              <span class="org-name">Theta Tau</span>
+            </div>
+          </div>
+          <div class="org-body">
+            <div class="org-roles">
+              <span class="org-roles-label">Leadership Roles</span>
+              <ul>
+                <li>
+                  Department Liaison
+                  <span class="role-year">Spring 2025</span>
+                </li>
+                <li>
+                  Vice Regent
+                  <span class="role-year">2024</span>
+                </li>
+                <li>
+                  Professional Development Co-Chair
+                  <span class="role-year">Fall 2023</span>
+                </li>
+              </ul>
+            </div>
+            <div class="org-desc">
+              <p>
+                Theta Tau is a professional co-ed engineering fraternity. Miami University is the home
+                of its Tau Delta chapter, and I rushed at the start of my freshman year. I was elected
+                as Professional Development Co-Chair at the beginning of my sophomore year, planning
+                weekly events and regularly reviewing members&#x2019; resumes.
+              </p>
+              <p>
+                I was elected Vice Regent for 2024, managing the chapter&#x2019;s full leadership
+                team. In Spring 2025 I was chosen as Departmental Liaison, in which role I planned
+                the 2025 Senior Design Expo for Miami University&#x2019;s College of Engineering and
+                Computing, and aided the university in recruitment efforts.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div class="extra-card">
-          <span class="extra-label">Leadership</span>
-          <h3>Student Organisation</h3>
-          <p>Role and responsibilities. What you built, organised, or
-             led during your time here.</p>
+ 
+        <!-- ── ASME ── -->
+        <div class="org-block">
+          <div class="org-header">
+            <div class="org-img">
+              <!--
+                Replace with your ASME logo or photo:
+                <img src="images/asme-logo.png" alt="ASME logo" />
+              -->
+              <img src="ASMEConference.jpeg" alt="ASME executive board at the national conference" style="object-fit:cover; object-position:center top;" />
+            </div>
+            <div class="org-title-block">
+              <span class="org-category">Engineering · Professional Society</span>
+              <span class="org-name">American Society of Mechanical Engineers</span>
+            </div>
+          </div>
+          <div class="org-body">
+            <div class="org-roles">
+              <span class="org-roles-label">Leadership Roles</span>
+              <ul>
+                <li>
+                  Chair (President)
+                  <span class="role-year">2025</span>
+                </li>
+                <li>
+                  Vice Chair (Vice President)
+                  <span class="role-year">2024</span>
+                </li>
+                <li>
+                  Secretary
+                  <span class="role-year">2023</span>
+                </li>
+              </ul>
+            </div>
+            <div class="org-desc">
+              <p>
+                The American Society of Mechanical Engineers (ASME) is a national standard-setting
+                organization, and Miami University&#x2019;s student chapter is focused on professional
+                development for engineering students. As Secretary in 2023, I managed the
+                organization&#x2019;s communication efforts.
+              </p>
+              <p>
+                Elected Vice Chair for 2024, I assisted the Chair in planning events for the chapter.
+                As Chair in 2025, I brought the executive board to a national conference for the first
+                time in the chapter&#x2019;s recent history, and more than doubled recruitment compared
+                to the prior year.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div class="extra-card">
-          <span class="extra-label" style="color:var(--gold);">Music</span>
-          <h3>Chamber Ensemble</h3>
-          <p>Members, repertoire focus, any recordings or competitions.
-             Add or remove cards freely.</p>
-        </div>
-
+ 
       </div>
     </div>
   </section>
-
+ 
   <!-- ══ FULL-WIDTH IMAGE BANNER ════════════════════════════ -->
   <!--
     Add your concert or performance photo as a CSS background-image:
-
+ 
       <div class="img-banner"
            style="background-image: url('images/concert-hall.jpg');">
         <div class="img-banner-caption">Recital Hall, April 2025</div>
       </div>
-
+ 
     Adjust the height: style="--banner-h: 420px; background-image: ..."
   -->
-  <div class="img-banner">
-    <div class="img-banner-caption">[ add a concert or performance photo here ]</div>
+  <div class="img-banner"
+       style="--banner-h: 420px; background-image: url('PictureBeforeConcerto.jpeg');">
+    <div class="img-banner-caption">Hall Auditorium &mdash; Goossens Oboe Concerto, March 2026</div>
   </div>
-
+ 
   <!-- ══ PERFORMANCES ══════════════════════════════════════ -->
   <!--
     BACKGROUND IMAGE EXAMPLE (light overlay over a stage photo):
@@ -839,205 +1217,218 @@
     <div class="wrap">
       <p class="section-tag music-tag">Performances</p>
       <h2>On stage</h2>
-
+ 
       <ul class="perf-list">
-
+ 
         <li class="perf-item">
-          <span class="perf-date">May<br>2025</span>
+          <span class="perf-date">Apr<br>2026</span>
           <div>
-            <p class="perf-title">Recital Title or Programme Name</p>
-            <p class="perf-meta">[Concert Hall / Theatre] — [City]</p>
+            <p class="perf-title">Senior Recital</p>
+            <p class="perf-meta">Sydney W. Souers Recital Hall</p>
             <p class="perf-meta" style="margin-top:.2rem;">
-              Works: Composer — <em>Piece Title</em>; Composer — <em>Piece Title</em>
+              Performed works by Vivaldi, Poulenc, Dranishnikova, Makita, and Price in a senior solo recital accompanied by Professor Heather MacPhail, Piano.
             </p>
           </div>
           <span class="perf-tag">Solo</span>
+          <div class="perf-photo">
+            <img src="SeniorRecital.jpeg" alt="Jack Nomina performing at his Senior Recital, April 2026" />
+          </div>
         </li>
-
+ 
+        <li class="perf-item">
+          <span class="perf-date">Mar<br>2026</span>
+          <div>
+            <p class="perf-title">Winners of the Concerto Competition Symphony Orchestra Concert</p>
+            <p class="perf-meta">Hall Auditorium</p>
+            <p class="perf-meta" style="margin-top:.2rem;">
+              Performed the Goossens Oboe Concerto accompanied by the Miami University Symphony Orchestra.
+            </p>
+          </div>
+          <span class="perf-tag">Concerto</span>
+          <div class="perf-photo">
+            <img src="PictureDuringConcerto.jpeg" alt="Jack Nomina performing the Goossens Oboe Concerto with the Miami University Symphony Orchestra" />
+          </div>
+        </li>
+ 
         <li class="perf-item">
           <span class="perf-date">Mar<br>2025</span>
           <div>
-            <p class="perf-title">Orchestra Concert — Spring Programme</p>
-            <p class="perf-meta">University Symphony Orchestra · [Venue]</p>
+            <p class="perf-title">Junior Recital</p>
+            <p class="perf-meta">Sydney W. Souers Recital Hall</p>
             <p class="perf-meta" style="margin-top:.2rem;">
-              Principal [instrument] — Conductor: [Name]
+              Performed works by Telemann, Bowen, and Piazzolla in a junior recital accompanied by Professor Heather MacPhail, Piano and alongside Kaitlyn Karruth, Oboe.
             </p>
           </div>
-          <span class="perf-tag">Orchestra</span>
-        </li>
-
-        <li class="perf-item">
-          <span class="perf-date">Nov<br>2024</span>
-          <div>
-            <p class="perf-title">Chamber Music Festival</p>
-            <p class="perf-meta">[Ensemble Name] · [Venue / Festival]</p>
-            <p class="perf-meta" style="margin-top:.2rem;">
-              Composer — <em>String Quartet in X Major</em>
-            </p>
+          <span class="perf-tag">Solo</span>
+          <div class="perf-photo">
+            <img src="JuniorRecital.jpeg" alt="Jack Nomina performing at his Junior Recital" />
           </div>
-          <span class="perf-tag">Chamber</span>
         </li>
-
-        <li class="perf-item">
-          <span class="perf-date">Apr<br>2024</span>
-          <div>
-            <p class="perf-title">Competition / Masterclass</p>
-            <p class="perf-meta">[Competition Name] · [City]</p>
-            <p class="perf-meta" style="margin-top:.2rem;">
-              Result: [prize / participation note]
-            </p>
-          </div>
-          <span class="perf-tag">Competition</span>
-        </li>
-
+ 
       </ul>
-
-      <div style="margin-top:2rem;">
-        <a href="#" class="btn btn-gold">Full programme history</a>
-      </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ══ CV ════════════════════════════════════════════════ -->
   <section id="cv">
     <div class="wrap">
       <p class="section-tag">CV</p>
       <h2>Experience &amp; skills</h2>
       <div class="cv-grid">
-
-        <!-- Left: education + experience -->
+ 
+        <!-- Left column -->
         <div>
           <div class="cv-block">
             <h3>Education</h3>
             <div class="cv-entry">
               <div class="cv-entry-head">
-                <span class="cv-role">B.S. Mechanical Engineering &amp; Music Performance</span>
-                <span class="cv-date">2022 – present</span>
+                <span class="cv-role">MS Mechanical Engineering</span>
+                <span class="cv-date">In Progress</span>
               </div>
-              <p class="cv-org">[University Name]</p>
+              <p class="cv-org">Miami University, Oxford, OH</p>
             </div>
-          </div>
-
-          <div class="cv-block" style="margin-top:2.5rem;">
-            <h3>Research &amp; Industry</h3>
             <div class="cv-entry">
               <div class="cv-entry-head">
-                <span class="cv-role">Research Assistant</span>
-                <span class="cv-date">2023 – present</span>
+                <span class="cv-role">BS Mechanical Engineering &amp; BA Music Performance</span>
+                <span class="cv-date">May 2026</span>
               </div>
-              <p class="cv-org">[Lab Name], [University]</p>
+              <p class="cv-org">Miami University, Oxford, OH &mdash; GPA: 3.92</p>
+              <p class="cv-org">GRE: 169Q / 167V / 5.0W</p>
+            </div>
+          </div>
+ 
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3>Research Experience</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Smart Materials Lab &mdash; Dr. Jeong-Hoi Koo</span>
+                <span class="cv-date">Jun 2024 – Present</span>
+              </div>
+              <p class="cv-org">Miami University</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Advanced Robotics &amp; Mechatronics Lab &mdash; International Intern</span>
+                <span class="cv-date">Jun – Aug 2024</span>
+              </div>
+              <p class="cv-org">Konkuk University, Seoul</p>
+            </div>
+          </div>
+ 
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3>Work Experience</h3>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Grader &mdash; MME 311 Dynamics</span>
+                <span class="cv-date">Feb – May 2026</span>
+              </div>
+              <p class="cv-org">Miami University</p>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head">
                 <span class="cv-role">Engineering Intern</span>
-                <span class="cv-date">Summer 2024</span>
+                <span class="cv-date">May – Aug 2025</span>
               </div>
-              <p class="cv-org">[Company Name]</p>
+              <p class="cv-org">AGarvey, LLC &mdash; Xenia, OH</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Mechanical Engineering Intern</span>
+                <span class="cv-date">Jun – Aug 2022</span>
+              </div>
+              <p class="cv-org">The Fischer Group &mdash; Fairfield, OH</p>
             </div>
           </div>
-
+ 
           <div class="cv-block" style="margin-top:2.5rem;">
             <h3 class="music-h3">Music Study</h3>
             <div class="cv-entry">
               <div class="cv-entry-head">
-                <span class="cv-role">Principal study — [Instrument]</span>
-                <span class="cv-date">2022 – present</span>
+                <span class="cv-role">Principal Study &mdash; Oboe</span>
+                <span class="cv-date">2022 – 2026</span>
               </div>
-              <p class="cv-org">Prof. [Teacher Name], [University]</p>
-            </div>
-            <div class="cv-entry">
-              <div class="cv-entry-head">
-                <span class="cv-role">Summer Music Programme</span>
-                <span class="cv-date">Summer 2023</span>
-              </div>
-              <p class="cv-org">[Programme / Festival Name]</p>
+              <p class="cv-org">Prof. Andrea Ridilla, Miami University</p>
             </div>
           </div>
         </div>
-
-        <!-- Right: skills + awards -->
+ 
+        <!-- Right column -->
         <div>
           <div class="cv-block">
-            <h3>Engineering skills</h3>
-            <ul class="skill-list">
-              <li class="skill-item">
-                <span class="skill-name">Python</span>
-                <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">C++</span>
-                <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">ROS / ROS 2</span>
-                <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">PyTorch</span>
-                <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">CAD / SolidWorks</span>
-                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-block" style="margin-top:2.5rem;">
-            <h3 class="music-h3">Musical skills</h3>
-            <ul class="skill-list">
-              <li class="skill-item">
-                <span class="skill-name">[Instrument]</span>
-                <div class="skill-bar"><div class="skill-fill music-fill" style="width:90%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">Music Theory</span>
-                <div class="skill-bar"><div class="skill-fill music-fill" style="width:85%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">Chamber Music</span>
-                <div class="skill-bar"><div class="skill-fill music-fill" style="width:80%"></div></div>
-              </li>
-              <li class="skill-item">
-                <span class="skill-name">Sight-reading</span>
-                <div class="skill-bar"><div class="skill-fill music-fill" style="width:75%"></div></div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="cv-block" style="margin-top:2.5rem;">
-            <h3>Awards</h3>
+            <h3>Accolades &amp; Achievements</h3>
             <div class="cv-entry">
               <div class="cv-entry-head">
-                <span class="cv-role">Award or Scholarship Name</span>
-                <span class="cv-date">2024</span>
+                <span class="cv-role">Ohio Space Grant Consortium Best Poster</span>
+                <span class="cv-date">2025</span>
               </div>
-              <p class="cv-org">Awarding Body</p>
+              <p class="cv-org">NASA Glenn Research Center &mdash; perfect evaluation score, selected from 50+ researchers across Ohio</p>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head">
-                <span class="cv-role">Competition Prize</span>
-                <span class="cv-date">2023</span>
+                <span class="cv-role">President&#x2019;s List</span>
+                <span class="cv-date">2 semesters</span>
               </div>
-              <p class="cv-org">Organisation</p>
             </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Dean&#x2019;s List</span>
+                <span class="cv-date">4 semesters</span>
+              </div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">TSA 2022 Engineering Design National Champion</span>
+                <span class="cv-date">2022</span>
+              </div>
+              <p class="cv-org">Technology Student Association</p>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <span class="cv-role">Eagle Scout</span>
+                <span class="cv-date"></span>
+              </div>
+              <p class="cv-org">Boy Scouts of America</p>
+            </div>
+          </div>
+ 
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3>Engineering Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="skill-name">CAD (Inventor, Fusion 360, SolidWorks, AutoCAD)</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Python / MATLAB</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">C# / C++ / Unity</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Machine Learning / Neural Networks</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">PLC Ladder Logic</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">FEMM / FEA Analysis</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Control Systems / Measurement</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Technical Writing</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Conversational Spanish</span><div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div></li>
+            </ul>
+          </div>
+ 
+          <div class="cv-block" style="margin-top:2.5rem;">
+            <h3 class="music-h3">Musical Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item"><span class="skill-name">Oboe Performance</span><div class="skill-bar"><div class="skill-fill music-fill" style="width:93%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Music Theory</span><div class="skill-bar"><div class="skill-fill music-fill" style="width:85%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Chamber Music</span><div class="skill-bar"><div class="skill-fill music-fill" style="width:85%"></div></div></li>
+              <li class="skill-item"><span class="skill-name">Orchestral Playing</span><div class="skill-bar"><div class="skill-fill music-fill" style="width:88%"></div></div></li>
+            </ul>
           </div>
         </div>
-
+ 
       </div>
-
+ 
       <div style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <a href="cv.pdf" class="btn btn-ghost">Download engineering CV</a>
-        <a href="music-cv.pdf" class="btn btn-ghost"
-           style="border-color:#d4b06a; color:var(--gold);">Download music CV</a>
+        <a href="NominaCV.pdf" class="btn btn-ghost">Download CV</a>
       </div>
     </div>
   </section>
-
+ 
   <hr class="divider" />
-
+ 
   <!-- ══ CONTACT ═══════════════════════════════════════════ -->
   <section id="contact">
     <div class="wrap">
@@ -1048,21 +1439,18 @@
         invitations, and conversations about robots or music.
       </p>
       <div class="contact-links">
-        <a href="mailto:you@university.edu" class="contact-link">Email</a>
-        <a href="https://scholar.google.com" class="contact-link">Google Scholar</a>
-        <a href="https://github.com/yourhandle" class="contact-link">GitHub</a>
-        <a href="https://linkedin.com/in/yourhandle" class="contact-link">LinkedIn</a>
-        <a href="https://twitter.com/yourhandle" class="contact-link">Twitter / X</a>
+        <a href="mailto:jacknomina1@hotmail.com" class="contact-link">Email</a>
+        <a href="https://www.linkedin.com/in/jacknomina" class="contact-link">LinkedIn</a>
       </div>
     </div>
   </section>
-
+ 
   <!-- ══ FOOTER ════════════════════════════════════════════ -->
   <footer>
     <div class="wrap">
       <p>© 2025 Your Name · Mechanical Engineering &amp; Music Performance · [University]</p>
     </div>
   </footer>
-
+ 
 </body>
 </html>
