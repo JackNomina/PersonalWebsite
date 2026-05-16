@@ -515,27 +515,67 @@
     /* ── Performances ─────────────────────────────────────── */
     .perf-list { list-style: none; }
  
+    /* Each perf-item: photo | text+meta | tag
+       The photo occupies the left column; text/meta sit to the right */
     .perf-item {
       display: grid;
-      grid-template-columns: 60px 1fr auto;
-      gap: 1rem;
-      padding: 1.4rem 0;
+      grid-template-columns: 280px 1fr auto;
+      grid-template-rows: auto;
+      gap: 1.5rem;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--border);
       align-items: start;
     }
     .perf-item:first-child { border-top: 1px solid var(--border); }
  
+    /* Photo always in column 1, spanning all rows */
+    .perf-photo {
+      grid-column: 1;
+      grid-row: 1 / -1;
+    }
+    .perf-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      object-fit: contain;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      display: block;
+      background: var(--surface);
+    }
+    .perf-photo-placeholder {
+      width: 100%;
+      min-height: 200px;
+      background: var(--surface);
+      border: 1px dashed var(--border-hi);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+ 
+    /* Date sits in column 2 */
     .perf-date {
+      grid-column: 2;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--gold);
       line-height: 1.4;
     }
  
+    /* Text block in column 2 */
+    .perf-text { grid-column: 2; }
     .perf-title { font-weight: 400; font-size: .95rem; color: var(--text); margin-bottom: .2rem; }
     .perf-meta  { font-size: .85rem; color: var(--muted); }
  
+    /* Tag in column 3, row 1 */
     .perf-tag {
+      grid-column: 3;
+      grid-row: 1;
       font-family: var(--mono);
       font-size: 10px;
       letter-spacing: .08em;
@@ -548,33 +588,6 @@
       align-self: start;
     }
  
-    .perf-photo {
-      grid-column: 2 / 3;
-      margin-top: .8rem;
-    }
-    .perf-photo img {
-      width: 100%;
-      max-height: 320px;
-      object-fit: cover;
-      object-position: center 20%;
-      border-radius: 2px;
-      border: 1px solid var(--border);
-      display: block;
-    }
-    .perf-photo-placeholder {
-      width: 100%;
-      height: 120px;
-      background: var(--surface);
-      border: 1px dashed var(--border-hi);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .06em;
-    }
     .perf-photo-caption {
       font-family: var(--mono);
       font-size: 10px;
@@ -582,8 +595,13 @@
       color: var(--muted);
       margin-top: .4rem;
     }
+ 
     @media (max-width: 700px) {
-      .perf-photo { grid-column: 1 / -1; }
+      .perf-item { grid-template-columns: 1fr auto; }
+      .perf-photo { grid-column: 1 / -1; grid-row: auto; }
+      .perf-date  { grid-column: 1; }
+      .perf-text  { grid-column: 1; }
+      .perf-tag   { grid-column: 2; grid-row: auto; }
     }
  
     /* ── Research publications ────────────────────────────── */
@@ -616,7 +634,7 @@
     }
     .pub-photo img {
       width: 100%;
-      max-height: 300px;
+      max-height: 390px;
       object-fit: cover;
       object-position: center 20%;
       border-radius: 2px;
@@ -1203,7 +1221,7 @@
     Adjust the height: style="--banner-h: 420px; background-image: ..."
   -->
   <div class="img-banner"
-       style="--banner-h: 420px; background-image: url('PictureBeforeConcerto.jpeg');">
+       style="--banner-h: 546px; background-image: url('PictureBeforeConcerto.jpeg');">
     <div class="img-banner-caption">Hall Auditorium &mdash; Goossens Oboe Concerto, March 2026</div>
   </div>
  
@@ -1221,8 +1239,11 @@
       <ul class="perf-list">
  
         <li class="perf-item">
-          <span class="perf-date">Apr<br>2026</span>
-          <div>
+          <div class="perf-photo">
+            <img src="SeniorRecital.jpeg" alt="Jack Nomina performing at his Senior Recital, April 2026" />
+          </div>
+          <div class="perf-text">
+            <span class="perf-date">Apr 2026</span>
             <p class="perf-title">Senior Recital</p>
             <p class="perf-meta">Sydney W. Souers Recital Hall</p>
             <p class="perf-meta" style="margin-top:.2rem;">
@@ -1230,14 +1251,14 @@
             </p>
           </div>
           <span class="perf-tag">Solo</span>
-          <div class="perf-photo">
-            <img src="SeniorRecital.jpeg" alt="Jack Nomina performing at his Senior Recital, April 2026" />
-          </div>
         </li>
  
         <li class="perf-item">
-          <span class="perf-date">Mar<br>2026</span>
-          <div>
+          <div class="perf-photo">
+            <img src="PictureDuringConcerto.jpeg" alt="Jack Nomina performing the Goossens Oboe Concerto with the Miami University Symphony Orchestra" />
+          </div>
+          <div class="perf-text">
+            <span class="perf-date">Mar 2026</span>
             <p class="perf-title">Winners of the Concerto Competition Symphony Orchestra Concert</p>
             <p class="perf-meta">Hall Auditorium</p>
             <p class="perf-meta" style="margin-top:.2rem;">
@@ -1245,14 +1266,14 @@
             </p>
           </div>
           <span class="perf-tag">Concerto</span>
-          <div class="perf-photo">
-            <img src="PictureDuringConcerto.jpeg" alt="Jack Nomina performing the Goossens Oboe Concerto with the Miami University Symphony Orchestra" />
-          </div>
         </li>
  
         <li class="perf-item">
-          <span class="perf-date">Mar<br>2025</span>
-          <div>
+          <div class="perf-photo">
+            <img src="JuniorRecital.jpeg" alt="Jack Nomina performing at his Junior Recital" />
+          </div>
+          <div class="perf-text">
+            <span class="perf-date">Mar 2025</span>
             <p class="perf-title">Junior Recital</p>
             <p class="perf-meta">Sydney W. Souers Recital Hall</p>
             <p class="perf-meta" style="margin-top:.2rem;">
@@ -1260,9 +1281,6 @@
             </p>
           </div>
           <span class="perf-tag">Solo</span>
-          <div class="perf-photo">
-            <img src="JuniorRecital.jpeg" alt="Jack Nomina performing at his Junior Recital" />
-          </div>
         </li>
  
       </ul>
